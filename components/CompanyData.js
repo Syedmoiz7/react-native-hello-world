@@ -4,12 +4,13 @@ import { Text, View, Button, TextInput } from 'react-native';
 import { fakeUserData } from "../api";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/slices/UserSlice";
+import DisplayUsers from "./DisplayUsers";
 
 const CompanyData = () => {
     const dispatch = useDispatch()
     
     const addNewUser = (data) => {
-        console.log(data);
+        // console.log(data);
         dispatch(addUser(data))
     }
     return (
@@ -18,6 +19,7 @@ const CompanyData = () => {
         <View>
             <Button title='Add new users' onPress={() => addNewUser(fakeUserData())}></Button>
             <Button title='Clear all users'></Button>
+            <DisplayUsers></DisplayUsers>
         </View>
     );
 }
