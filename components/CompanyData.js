@@ -1,9 +1,38 @@
 import React from "react";
 import { useState } from 'react';
 import { Text, View, Button, TextInput } from 'react-native';
+import { fakeUserData } from "../api";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/slices/UserSlice";
 
 const CompanyData = () => {
-    // const [name, setName] = useState("")
+    const dispatch = useDispatch()
+    
+    const addNewUser = (data) => {
+        console.log(data);
+        dispatch(addUser(data))
+    }
+    return (
+
+
+        <View>
+            <Button title='Add new users' onPress={() => addNewUser(fakeUserData())}></Button>
+            <Button title='Clear all users'></Button>
+        </View>
+    );
+}
+
+export default CompanyData;
+
+
+
+
+
+
+
+
+
+  // const [name, setName] = useState("")
     // const [age, setAge] = useState("")
     // const [email, setEmail] = useState("")
     // const [test, setTest] = useState("12ehggauishjasd1")
@@ -16,11 +45,9 @@ const CompanyData = () => {
     //     console.log('back');
     // }
 
-    const addNewUser = () => {
-        
-    }
-    return (
 
+
+    
         // <View>
         //   <TextInput placeholder='Enter your name' style={{borderWidth: 1, margin: 5}} onChangeText={setName} value={name}></TextInput>
         //   <TextInput placeholder='Enter your Age' style={{borderWidth: 1, margin: 5}} onChangeText={setAge} value={age}></TextInput>
@@ -35,12 +62,3 @@ const CompanyData = () => {
         //     } ></Button>
         //   <Button title='back' color={'red'} onPress={back}></Button>
         // </View>
-
-        <View>
-            <Button title='Add new users' onPress={addNewUser}></Button>
-            <Button title='Clear all users'></Button>
-        </View>
-    );
-}
-
-export default CompanyData;
